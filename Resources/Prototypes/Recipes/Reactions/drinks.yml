@@ -389,7 +389,7 @@
 - type: reaction
   id: DriestMartini
   requiredMixerCategories:
-  - Shake
+  - Stir
   reactants:
     Gin:
       amount: 1
@@ -747,7 +747,7 @@
 - type: reaction
   id: Martini
   requiredMixerCategories:
-  - Shake
+  - Stir
   reactants:
     Gin:
       amount: 2
