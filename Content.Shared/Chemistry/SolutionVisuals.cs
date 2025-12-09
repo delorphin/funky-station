@@ -17,7 +17,8 @@ namespace Content.Shared.Chemistry
         Color,
         FillFraction,
         BaseOverride,
-        SolutionName
+        SolutionName,
+        ReagentCount,
     }
 
     public enum SolutionContainerLayers : byte

@@ -9,7 +9,9 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Hands.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Chemistry.Components
@@ -37,6 +39,8 @@ namespace Content.Shared.Chemistry.Components
         public bool Metamorphic = false;
         [DataField]
         public SpriteSpecifier? MetamorphicDefaultSprite;
+        [DataField]
+        public List<ProtoId<ReagentPrototype>>? ReagentWhitelist = null;
         [DataField]
         public LocId MetamorphicNameFull = "transformable-container-component-glass";
 

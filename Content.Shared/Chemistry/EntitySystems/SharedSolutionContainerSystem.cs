@@ -283,6 +283,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         AppearanceSystem.SetData(uid, SolutionContainerVisuals.FillFraction, solution.FillFraction, appearanceComponent);
         AppearanceSystem.SetData(uid, SolutionContainerVisuals.Color, solution.GetColor(PrototypeManager), appearanceComponent);
         AppearanceSystem.SetData(uid, SolutionContainerVisuals.SolutionName, relation.ContainerName, appearanceComponent);
+        AppearanceSystem.SetData(uid, SolutionContainerVisuals.ReagentCount, solution.Contents.Count, appearanceComponent);
 
         if (solution.GetPrimaryReagentId() is { } reagent)
             AppearanceSystem.SetData(uid, SolutionContainerVisuals.BaseOverride, reagent.ToString(), appearanceComponent);
@@ -350,6 +351,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
 
         AppearanceSystem.SetData(uid, SolutionContainerVisuals.FillFraction, solution.FillFraction, appearanceComponent);
         AppearanceSystem.SetData(uid, SolutionContainerVisuals.Color, solution.GetColor(PrototypeManager), appearanceComponent);
+        AppearanceSystem.SetData(uid, SolutionContainerVisuals.ReagentCount, solution.Contents.Count, appearanceComponent);
 
         if (solution.GetPrimaryReagentId() is { } reagent)
             AppearanceSystem.SetData(uid, SolutionContainerVisuals.BaseOverride, reagent.ToString(), appearanceComponent);

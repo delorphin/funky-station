@@ -16,6 +16,7 @@
 using Content.Client.Items.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
@@ -86,39 +87,54 @@ public sealed class SolutionContainerVisualsSystem : VisualizerSystem<SolutionCo
             if (args.Sprite.LayerMapTryGet(component.BaseLayer, out var baseLayer))
             {
                 var hasOverlay = args.Sprite.LayerMapTryGet(component.OverlayLayer, out var overlayLayer);
-
-                if (AppearanceSystem.TryGetData<string>(uid, SolutionContainerVisuals.BaseOverride,
-                        out var baseOverride,
-                        args.Component))
-                {
-                    _prototype.TryIndex<ReagentPrototype>(baseOverride, out var reagentProto);
-
-                    if (reagentProto?.MetamorphicSprite is { } sprite)
+               // AppearanceSystem.TryGetData<int>(uid,
+                 //   SolutionContainerVisuals.ReagentCount,
+                   // out var reagentCount,
+                   // args.Component);
+               // if (reagentCount== 1)
+             //   {
+                    if (AppearanceSystem.TryGetData<string>(uid,
+                            SolutionContainerVisuals.BaseOverride,
+                            out var baseOverride,
+                            args.Component))
                     {
-                        args.Sprite.LayerSetSprite(baseLayer, sprite);
-                        if (reagentProto.MetamorphicMaxFillLevels > 0)
+                        _prototype.TryIndex<ReagentPrototype>(baseOverride, out var reagentProto);
+                        if (component.ReagentWhitelist != null && component.ReagentWhitelist.Contains(baseOverride) &&
+                            reagentProto?.MetamorphicSprite is { } sprite)
                         {
-                            args.Sprite.LayerSetVisible(fillLayer, true);
-                            maxFillLevels = reagentProto.MetamorphicMaxFillLevels;
-                            fillBaseName = reagentProto.MetamorphicFillBaseName;
-                            changeColor = reagentProto.MetamorphicChangeColor;
-                            fillSprite = sprite;
+                            args.Sprite.LayerSetSprite(baseLayer, sprite);
+                            if (reagentProto.MetamorphicMaxFillLevels > 0)
+                            {
+                                args.Sprite.LayerSetVisible(fillLayer, true);
+                                maxFillLevels = reagentProto.MetamorphicMaxFillLevels;
+                                fillBaseName = reagentProto.MetamorphicFillBaseName;
+                                changeColor = reagentProto.MetamorphicChangeColor;
+                                fillSprite = sprite;
+                            }
+                            else
+                                args.Sprite.LayerSetVisible(fillLayer, false);
+
+                            if (hasOverlay)
+                                args.Sprite.LayerSetVisible(overlayLayer, false);
                         }
                         else
-                            args.Sprite.LayerSetVisible(fillLayer, false);
-
-                        if (hasOverlay)
-                            args.Sprite.LayerSetVisible(overlayLayer, false);
+                        {
+                            args.Sprite.LayerSetVisible(fillLayer, true);
+                            if (hasOverlay)
+                                args.Sprite.LayerSetVisible(overlayLayer, true);
+                            if (component.MetamorphicDefaultSprite != null)
+                                args.Sprite.LayerSetSprite(baseLayer, component.MetamorphicDefaultSprite);
+                        }
                     }
-                    else
-                    {
-                        args.Sprite.LayerSetVisible(fillLayer, true);
-                        if (hasOverlay)
-                            args.Sprite.LayerSetVisible(overlayLayer, true);
-                        if (component.MetamorphicDefaultSprite != null)
-                            args.Sprite.LayerSetSprite(baseLayer, component.MetamorphicDefaultSprite);
-                    }
-                }
+               // }
+                //else
+               // {
+                 //   if (component.MetamorphicDefaultSprite != null)
+                   // {
+                      //  args.Sprite.LayerSetSprite(baseLayer, component.MetamorphicDefaultSprite);
+                   //     args.Sprite.LayerSetVisible(fillLayer, true);
+                    //}
+                //}
             }
         }
         else

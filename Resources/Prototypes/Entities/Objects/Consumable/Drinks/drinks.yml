@@ -210,6 +210,9 @@
       metamorphicDefaultSprite:
         sprite: Objects/Consumable/Drinks/glass_clear.rsi
         state: icon
+      reagentWhitelist:
+        - Wine
+        - Beer
     - type: TransformableContainer
 
 - type: entity
