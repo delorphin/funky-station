@@ -564,7 +564,7 @@
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/alliescocktail.rsi
     state: icon_empty
-  metamorphicMaxFillLevels: 4
+  metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
 
@@ -841,7 +841,7 @@
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/bronx.rsi
     state: icon_empty
-  metamorphicMaxFillLevels: 4
+  metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
 
@@ -1291,7 +1291,7 @@
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/jackrose.rsi
     state: icon_empty
-  metamorphicMaxFillLevels: 4
+  metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
 
@@ -2415,7 +2415,7 @@
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/espressomartini.rsi
     state: icon_empty
-  metamorphicMaxFillLevels: 6
+  metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
@@ -2461,7 +2461,7 @@
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/thesunalsorises.rsi
     state: icon_empty
-  metamorphicMaxFillLevels: 4
+  metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
